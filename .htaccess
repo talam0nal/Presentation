@@ -1,0 +1,16 @@
+
+Options -Indexes
+
+<IfModule mod_php5.c>
+php_value max_execution_time 259200
+php_value session.gc_maxlifetime 64535
+</IfModule>
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d    
+
+RewriteRule ^search\.php$ - [L]
+
+RewriteRule ^([-A-Za-z0-9\[\]\/_]+)(/?)+$ index.php?q=$1 [L,QSA]
